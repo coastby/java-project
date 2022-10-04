@@ -14,10 +14,8 @@ public class EvenOdd2 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String nums = sc.nextLine();
-        String[] arr = nums.split(" ");
-        int L = Integer.parseInt(arr[0]);
-        int R = Integer.parseInt(arr[1]);
+        int L = sc.nextInt();
+        int R = sc.nextInt();
 
         System.out.printf("%s+%s=%s", getEvenOdd(L), getEvenOdd(R), getEvenOdd(L+R));
     }
