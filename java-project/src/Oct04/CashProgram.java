@@ -1,9 +1,10 @@
-package Oct4;
+package Oct04;
 
 import java.util.Scanner;
 
 public class CashProgram {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         System.out.println("금액을 넣으세요:[숫자입력]");
         int total = sc.nextInt();
