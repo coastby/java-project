@@ -8,5 +8,11 @@ public class CalculatorMain {
         calculator.multiple();
         calculator.devide();
 
+        RandomCalculator r = new RandomCalculator(5);
+        r.plus();
+        r.minus();
+        r.multiple();
+        r.divide();
+
     }
 }
