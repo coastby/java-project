@@ -1,4 +1,4 @@
-package oct05.Collection;
+package oct05.collection;
 
 import java.util.List;
 

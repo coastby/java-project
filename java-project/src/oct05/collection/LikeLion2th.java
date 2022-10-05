@@ -1,13 +1,16 @@
-package oct05.Collection;
+package oct05.collection;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LikeLion2th {
     private List<String> students;
+    private List<Student> studentsObj;
 
     public LikeLion2th() {
         this.students = new ArrayList<>();
+        Names names = new Names();
+        this.studentsObj = names.getStudentObjs();
     }
 
     public void setStudentsList(String student) {
