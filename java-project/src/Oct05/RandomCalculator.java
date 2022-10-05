@@ -32,6 +32,11 @@ public class RandomCalculator implements Calculratable{
     }
     @Override
     public void divide() {
+        //실수 계산에서 0으로 나누기는 결과가 infinity가 나옴
+        if (randomNumber == 0) {
+            System.out.println("랜덤하게 생성된 숫자가 0입니다.");
+            return;
+        }
         float result = (float) a / randomNumber;
         System.out.println(result);
     }
