@@ -1,8 +1,12 @@
 package Oct05.Calculator;
 
 public class Calculator {
+    private int left;
+    private int right;
     private NumberGenerater numberGenerater;
     private int baseNum = 10;
+
+
     public Calculator (NumberGenerater numberGenerater){
         this.numberGenerater = numberGenerater;
     }
@@ -13,16 +17,23 @@ public class Calculator {
     }
 
     public void plus (int num) {
-        int result = num + numberGenerater.generate(num);
-        System.out.println(result);
+        int left = num;
+        int right = numberGenerater.generate(baseNum);
+        int result = left + right;
+        System.out.println(left + " + " + right + " = " + result);
     }
     public void minus (int num) {
-        int result = num - numberGenerater.generate(num);
-        System.out.println(result);
+        int left = num;
+        int right = numberGenerater.generate(baseNum);
+        int result = left - right;
+        System.out.println(left + " - " + right + " = " + result);
     }
     public void multiple (int num) {
-        int result = num * numberGenerater.generate(num);
-        System.out.println(result);
+        int left = num;
+        int right = numberGenerater.generate(baseNum);
+        int result = left * right;
+        System.out.println(left + " x " + right + " = " + result);
     }
+
 
 }
