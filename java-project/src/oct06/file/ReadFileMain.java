@@ -27,16 +27,15 @@ public class ReadFileMain {
         System.out.println(r2);
 
         //현재 디렉토리에 있는 파일 목록 출력하기
-
         printFiles("./data/");
-        /*
-        ./.DS_Store
-        ./out
-        ./.gitignore
-        ./java-project
-        ./.git
-        ./data
-        ./.idea
-         */
+
+        //파일 한 줄 읽기
+        String line = rf.readOneLine();
+        System.out.println(line);
+
+        //파일 다 읽기
+        String lines = rf.readAllLine();
+        System.out.println(lines);
+
     }
 }

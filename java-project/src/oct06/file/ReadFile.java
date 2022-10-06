@@ -11,18 +11,18 @@ public class ReadFile {
 
     private String filename;
 
-    public ReadFile(String filename) {
+    public ReadFile(String filename) throws FileNotFoundException {
         this.filename = filename;
     }
 
     public char readOneByte () throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        return (char)br.read();
+        FileReader fr = new FileReader(filename);
+        return (char) fr.read();
     }
 
     public String readTwoByte () throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        String result = Character.toString(br.read()) + Character.toString(br.read());
+        FileReader fr = new FileReader(filename);
+        String result = Character.toString(fr.read()) + Character.toString(fr.read());
         return result;
     }
 
@@ -33,12 +33,36 @@ public class ReadFile {
      * num의 수만큼 글자를 읽어서 문자열로 반환하는 함수
      */
     public String readMultiByte (int num) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
+        FileReader fr = new FileReader(filename);
         String result = "";
         //num만큼의 글자를 문자열에 붙여넣기
         for (int i = 0; i < num; i++) {
-            result += String.valueOf((char) br.read());
+            //이거 주석 풀면 순서가 밀림 이따가 다시 손봐야함
+            //문서가 끝나면 for문 탈출
+//            if (fr.read() == -1) {
+//                return result;
+//            }
+            result += String.valueOf((char) fr.read());
         }
         return result;
+    }
+
+    public String readOneLine() throws IOException {
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        return br.readLine();
+    }
+
+    public String readAllLine() throws IOException {
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        StringBuffer sb = new StringBuffer();
+        while (true) {
+            if (br.readLine() == null) {
+                break;
+            }
+            sb.append(br.readLine()).append("\n");
+        }
+        return sb.toString();
     }
 }
