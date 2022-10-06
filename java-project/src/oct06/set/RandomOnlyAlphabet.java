@@ -1,9 +1,5 @@
 package oct06.set;
 
-import oct05.calculator.AlphabetGenerater;
-import oct05.calculator.Generater;
-
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 

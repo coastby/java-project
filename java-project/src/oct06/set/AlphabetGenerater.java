@@ -1,4 +1,4 @@
-package oct05.calculator;
+package oct06.set;
 
 public class AlphabetGenerater implements Generater{
     @Override
