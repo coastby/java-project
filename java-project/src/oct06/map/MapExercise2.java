@@ -13,6 +13,8 @@ public class MapExercise2 {
         HashMap<Character, Integer> result = new HashMap<>();
         //문자열을 대문자로 변환
         String upperS = s.toUpperCase();
+        //대문자 알파벳 하나씩 꺼내어서
+        //Replace() 이용하여 해당 문자를 제거하고 길이차를 갯수로 등록
         for (char ch = 'A'; ch <= 'Z'; ch++) {
             String removedS = upperS.replace(String.valueOf(ch), "");
             int cnt = upperS.length() - removedS.length();
@@ -23,6 +25,7 @@ public class MapExercise2 {
 
     public static void main(String[] args) {
         String s = "aAAaab...bbcc//dd-efft-gg";
+        //해쉬맵 생성 후, 값 저장
         HashMap<Character, Integer> map = alphabetCount(s);
 
         System.out.println(map);
