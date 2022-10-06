@@ -4,8 +4,6 @@
 
 ## oct 04
 
----
-
 ## 1. Git
 
 - Create Git Repository 
@@ -20,8 +18,6 @@
 
 
 ## oct 05
-
----
 
 ## 1. Interface 활용
 
@@ -43,8 +39,6 @@
 
 
 ## oct06
-
----
 
 ## 1. Set
 
