@@ -1,4 +1,4 @@
-package Oct04;
+package oct04;
 
 public class CU1001 {
     public static void main(String[] args) {

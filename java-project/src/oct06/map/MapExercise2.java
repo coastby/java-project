@@ -13,8 +13,7 @@ public class MapExercise2 {
         HashMap<Character, Integer> result = new HashMap<>();
         //문자열을 대문자로 변환
         String upperS = s.toUpperCase();
-        for (int i = 65; i <= 90; i++) {
-            char ch = (char) i;
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
             String removedS = upperS.replace(String.valueOf(ch), "");
             int cnt = upperS.length() - removedS.length();
             result.put(ch, cnt);
@@ -23,10 +22,9 @@ public class MapExercise2 {
     }
 
     public static void main(String[] args) {
-        String s = "aaaaabbb";
+        String s = "aAAaab...bbcc//dd-efft-gg";
         HashMap<Character, Integer> map = alphabetCount(s);
 
         System.out.println(map);
-
     }
 }

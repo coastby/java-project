@@ -1,4 +1,4 @@
-package Oct05.Statement;
+package oct05.statement;
 
 public class Main {
     public static void main(String[] args) {

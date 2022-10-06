@@ -1,6 +1,4 @@
-package Oct05;
-
-import Oct05.Calculator.Calculator;
+package oct05;
 
 public class CalculatorMain {
     public static void main(String[] args) {

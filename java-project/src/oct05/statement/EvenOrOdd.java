@@ -1,4 +1,4 @@
-package Oct05.Statement;
+package oct05.statement;
 
 public class EvenOrOdd {
     private int input;

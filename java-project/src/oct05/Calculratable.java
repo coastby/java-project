@@ -1,4 +1,4 @@
-package Oct05;
+package oct05;
 
 public interface Calculratable {
     public void plus();

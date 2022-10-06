@@ -1,6 +1,5 @@
-package Oct04;
+package oct04;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class EvenOdd2 {
