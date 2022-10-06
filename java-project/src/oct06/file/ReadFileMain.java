@@ -4,6 +4,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class ReadFileMain {
+    public static void printFiles (String add){
+        File dir = new File(add);
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            System.out.println(file);
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         ReadFile rf = new ReadFile("./data/a_file.txt");
         //1글자 읽기
@@ -20,11 +28,7 @@ public class ReadFileMain {
 
         //현재 디렉토리에 있는 파일 목록 출력하기
 
-        File dir = new File("./");
-        File[] files = dir.listFiles();
-        for (File file : files) {
-            System.out.println(file);
-        }
+        printFiles("./data/");
         /*
         ./.DS_Store
         ./out
