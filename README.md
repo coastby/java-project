@@ -7,7 +7,6 @@
 ## 1. Git
 
 - Create Git Repository
-
 - `push`,` clone`,  `add`, `.gitignore`
 
 ## 2. 알고리즘 문제
