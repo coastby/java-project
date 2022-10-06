@@ -33,7 +33,7 @@ public class ReadFileMain {
         String line = rf.readOneLine();
         System.out.println(line);
 
-        //파일 다 읽기
+        //파일 다 읽
         String lines = rf.readAllLine();
         System.out.println(lines);
 
