@@ -18,10 +18,21 @@ public class ReadFileMain {
         String r2 = rf.readMultiByte(5);
         System.out.println(r2);
 
+        //현재 디렉토리에 있는 파일 목록 출력하기
+
         File dir = new File("./");
         File[] files = dir.listFiles();
         for (File file : files) {
             System.out.println(file);
         }
+        /*
+        ./.DS_Store
+        ./out
+        ./.gitignore
+        ./java-project
+        ./.git
+        ./data
+        ./.idea
+         */
     }
 }
