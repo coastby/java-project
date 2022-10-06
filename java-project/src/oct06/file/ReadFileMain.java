@@ -1,10 +1,11 @@
 package oct06.file;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ReadFileMain {
     public static void main(String[] args) throws IOException {
-        ReadFile rf = new ReadFile("a_file.txt");
+        ReadFile rf = new ReadFile("./data/a_file.txt");
         //1글자 읽기
         char r1 = rf.readOneByte();
         System.out.println(r1);
@@ -17,6 +18,10 @@ public class ReadFileMain {
         String r2 = rf.readMultiByte(5);
         System.out.println(r2);
 
-
+        File dir = new File("./");
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            System.out.println(file);
+        }
     }
 }
