@@ -1,8 +1,7 @@
-package Oct05.Calculator;
-
-import Oct05.Calculator.NumberGenerater;
+package oct05.calculator;
 
 public class RandomNumberGenerater implements NumberGenerater {
+    //0이상 num 미만 랜덤 수 생성
     @Override
     public int generate(int num) {
         return (int) (Math.random()*num);

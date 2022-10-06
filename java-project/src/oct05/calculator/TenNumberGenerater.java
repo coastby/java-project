@@ -1,6 +1,4 @@
-package Oct05.Calculator;
-
-import Oct05.Calculator.NumberGenerater;
+package oct05.calculator;
 
 public class TenNumberGenerater implements NumberGenerater {
     @Override

@@ -1,4 +1,4 @@
-package Oct05.Calculator;
+package oct05.calculator;
 
 public class Calculator {
     private int left;
@@ -9,6 +9,7 @@ public class Calculator {
 
     public Calculator (NumberGenerater numberGenerater){
         this.numberGenerater = numberGenerater;
+        baseNum = 10;
     }
 
     public Calculator(NumberGenerater numberGenerater, int baseNum) {

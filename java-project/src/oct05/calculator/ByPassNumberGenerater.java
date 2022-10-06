@@ -1,4 +1,4 @@
-package Oct05.Calculator;
+package oct05.calculator;
 
 public class ByPassNumberGenerater implements NumberGenerater{
     @Override

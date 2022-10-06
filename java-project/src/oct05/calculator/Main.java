@@ -1,4 +1,4 @@
-package Oct05.Calculator;
+package oct05.calculator;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,10 +6,14 @@ public class Main {
         NumberGenerater rnumberGenerater = new RandomNumberGenerater();
         Calculator randomCalculator = new Calculator(rnumberGenerater);
         randomCalculator.plus(20);
+        randomCalculator.minus(20);
+        randomCalculator.multiple(20);
 
 
         //baseNum과 plus의 파라미터를 더해준다.
         Calculator byPassCalculator = new Calculator(new ByPassNumberGenerater(), 50);
         byPassCalculator.plus(20);
+        byPassCalculator.minus(20);
+        byPassCalculator.multiple(20);
     }
 }
