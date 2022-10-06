@@ -4,13 +4,13 @@
 
 ## oct 04
 
-## 1. Git
+### 1. Git
 
 - Create Git Repository 
 
 - `push`,` clone`,  `add`, `.gitignore`
 
-## 2. 알고리즘 문제
+### 2. 알고리즘 문제
 
 - 잔돈 교환하기 (CashProgram)
 - 짝수/홀수 프로그램
