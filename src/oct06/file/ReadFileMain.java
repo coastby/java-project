@@ -13,7 +13,7 @@ public class ReadFileMain {
     }
 
     public static void main(String[] args) throws IOException {
-        ReadFile rf = new ReadFile("./data/a_file.txt");
+        ReadFile rf = new ReadFile("../data/a_file.txt");
         //1글자 읽기
         char r1 = rf.readOneByte();
         System.out.println(r1);

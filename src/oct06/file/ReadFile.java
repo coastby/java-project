@@ -38,18 +38,14 @@ public class ReadFile {
         //num만큼의 글자를 문자열에 붙여넣기
 
         int cnt = 0;
-        while (fr.read() != -1 && cnt < num) {
-            result += String.valueOf((char) fr.read());
-            cnt++;
+
+        for (int i = 0; i < num; i++) {
+            int ch = fr.read();
+            if (ch == -1) {
+                return result;
+            }
+            result += String.valueOf((char) ch);
         }
-//        for (int i = 0; i < num; i++) {
-            //이거 주석 풀면 순서가 밀림 이따가 다시 손봐야함
-            //문서가 끝나면 for문 탈출
-//            if (fr.read() == -1) {
-//                return result;
-//            }
-//            result += String.valueOf((char) fr.read());
-//        }
         return result;
     }
 
