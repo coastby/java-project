@@ -47,14 +47,16 @@ public class PopulationFlow {
         }
     }
 
+    //문자열 한 줄 가져와서 PopulationMove 객체 반환하는 함수
     public PopulationMove parse(String data) {
         String[] lineArr = data.split(",");
         int toSido = Integer.parseInt(lineArr[0]);
-        int fromSido = Integer.parseInt(lineArr[6]);
+        int fromSido = Integer.parseInt(lineArr[1]);
 
         return new PopulationMove(fromSido, toSido);
     }
 
+    //시도 코드가 매개변수로 주어지면 해당되는 시도를 문자열로 반환
     public static String sidoMapping (int code) {
         HashMap<Integer, String> sidoMap = new HashMap<>();
 
@@ -80,6 +82,9 @@ public class PopulationFlow {
         return sidoMap.get(code);
     }
 
+
+
+    //매개변수 이름의 파일을 생성하는 함수
     public void createFile (String filename) {
         File file = new File(filename);
         try {
@@ -89,20 +94,45 @@ public class PopulationFlow {
         }
     }
 
+    //List<String>을 지정한 파일에 write
+    public void write (List<String> strings, String filename) {
+        File file = new File(filename);
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            for (String string : strings) {
+                writer.write(string);
+            }
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
+    public String fromToString(PopulationMove pm) {
+        return pm.getToSido() + "," + pm.getFromSido()+ "\n";
+    }
 
 
 
     public static void main(String[] args) throws IOException {
         PopulationFlow pf = new PopulationFlow();
-        String filename = "../data/population-data.csv";
-//        전입 전출 출력
-//        List<PopulationMove> pml = pf.readByLine(filename);
-//        for (PopulationMove pm : pml) {
-//            System.out.printf("전입 : %s, 전출 : %s\n", sidoMapping(pm.getToSido()), sidoMapping(pm.getFromSido()));
-//        }
+        String filename = "../data/from_to.txt";
 
-        pf.createFile("from_to.txt");
+        List<PopulationMove> pml = pf.readByLine(filename);
+        for (PopulationMove pm : pml) {
+            System.out.printf("전입 : %d, 전출 : %d\n", pm.getToSido(), pm.getFromSido());
+        }
+
+
+
+        //파일 수정하는 코드
+//        List<String> lines = new ArrayList<>();
+//        for (PopulationMove pm : pml) {
+//            String str = pf.fromToString(pm);
+//            lines.add(str);
+//        }
+//        pf.write(lines, "../data/from_to.txt");
+
+
     }
 }
