@@ -6,9 +6,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class PopulationFlow {
     public void readByChar(String filename) throws IOException {
@@ -57,30 +55,7 @@ public class PopulationFlow {
     }
 
     //시도 코드가 매개변수로 주어지면 해당되는 시도를 문자열로 반환
-    public static String sidoMapping (int code) {
-        HashMap<Integer, String> sidoMap = new HashMap<>();
 
-        sidoMap.put(00, "전국");
-        sidoMap.put(11, "서울특별시");
-        sidoMap.put(21, "부산광역시");
-        sidoMap.put(22, "대구광역시");
-        sidoMap.put(23, "인천광역시");
-        sidoMap.put(24, "광주광역시");
-        sidoMap.put(25, "대전광역시");
-        sidoMap.put(26, "울산광역시");
-        sidoMap.put(29, "세종특별자치시");
-        sidoMap.put(31, "경기도");
-        sidoMap.put(32, "강원도");
-        sidoMap.put(33, "충청북도");
-        sidoMap.put(34, "충청남도");
-        sidoMap.put(35, "전라북도");
-        sidoMap.put(36, "전라남도");
-        sidoMap.put(37, "경상북도");
-        sidoMap.put(38, "경상남도");
-        sidoMap.put(39, "제주특별자치도");
-
-        return sidoMap.get(code);
-    }
 
 
 
@@ -112,27 +87,37 @@ public class PopulationFlow {
         return pm.getToSido() + "," + pm.getFromSido()+ "\n";
     }
 
-
-
-    public static void main(String[] args) throws IOException {
-        PopulationFlow pf = new PopulationFlow();
-        String filename = "../data/from_to.txt";
-
-        List<PopulationMove> pml = pf.readByLine(filename);
+    public Map<String, Integer> getMoveCntMap (List<PopulationMove> pml) {
+        Map<String, Integer> moveCntMap = new HashMap<>();
         for (PopulationMove pm : pml) {
-            System.out.printf("전입 : %d, 전출 : %d\n", pm.getToSido(), pm.getFromSido());
+            String key = pm.getFromSido() + "," + pm.getToSido();
+            if (moveCntMap.get(key) == null) {
+                moveCntMap.put(key, 0);
+            }
+            moveCntMap.put(key, moveCntMap.get(key) + 1);
         }
+        return moveCntMap;
+    }
+
+
+    public static void main (String[] args) throws IOException {
+        PopulationFlow pf = new PopulationFlow();
+//        String filename = "../data/each_sido_cnt.txt";
+        List<PopulationMove> pml = pf.readByLine("../data/from_to.txt");
+        Map<String, Integer> moveCntMap = pf.getMoveCntMap(pml);
 
 
 
-        //파일 수정하는 코드
-//        List<String> lines = new ArrayList<>();
-//        for (PopulationMove pm : pml) {
-//            String str = pf.fromToString(pm);
-//            lines.add(str);
-//        }
-//        pf.write(lines, "../data/from_to.txt");
+        for (String key : moveCntMap.keySet()) {
+            String[] sidos = key.split(",");
 
+            int from = PopulationMove.heatMapping(sidos[0]);
+            int to = PopulationMove.heatMapping(sidos[1]);
+
+            String line = String.format("[%d, %d, %d]", from, to, moveCntMap.get(key));
+            System.out.print(line+", ");
+
+        }
 
     }
 }
