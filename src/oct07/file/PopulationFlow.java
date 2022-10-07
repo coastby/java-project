@@ -2,13 +2,13 @@ package oct07.file;
 
 import oct06.file.ReadFile;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class PopulationFlow {
     public void readByChar(String filename) throws IOException {
@@ -22,15 +22,17 @@ public class PopulationFlow {
         System.out.println(filecontents);
     }
 
-    public void readByLine(String filename) throws IOException {
+    public List<PopulationMove> readByLine(String filename) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         //여기까지는 파일을 읽지 않는다.
-
+        List<PopulationMove> pml = new ArrayList<>();
         String str;
         while ((str = reader.readLine()) != null) {
-            System.out.println(str);
+            PopulationMove pm = parse(str);
+            pml.add(pm);
         }
         reader.close();
+        return pml;
     }
 
     //모던 스타일
@@ -47,22 +49,60 @@ public class PopulationFlow {
 
     public PopulationMove parse(String data) {
         String[] lineArr = data.split(",");
-        int fromSido = Integer.parseInt(lineArr[0]);
-        int toSido = Integer.parseInt(lineArr[6]);
+        int toSido = Integer.parseInt(lineArr[0]);
+        int fromSido = Integer.parseInt(lineArr[6]);
 
         return new PopulationMove(fromSido, toSido);
     }
+
+    public static String sidoMapping (int code) {
+        HashMap<Integer, String> sidoMap = new HashMap<>();
+
+        sidoMap.put(00, "전국");
+        sidoMap.put(11, "서울특별시");
+        sidoMap.put(21, "부산광역시");
+        sidoMap.put(22, "대구광역시");
+        sidoMap.put(23, "인천광역시");
+        sidoMap.put(24, "광주광역시");
+        sidoMap.put(25, "대전광역시");
+        sidoMap.put(26, "울산광역시");
+        sidoMap.put(29, "세종특별자치시");
+        sidoMap.put(31, "경기도");
+        sidoMap.put(32, "강원도");
+        sidoMap.put(33, "충청북도");
+        sidoMap.put(34, "충청남도");
+        sidoMap.put(35, "전라북도");
+        sidoMap.put(36, "전라남도");
+        sidoMap.put(37, "경상북도");
+        sidoMap.put(38, "경상남도");
+        sidoMap.put(39, "제주특별자치도");
+
+        return sidoMap.get(code);
+    }
+
+    public void createFile (String filename) {
+        File file = new File(filename);
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 
 
 
     public static void main(String[] args) throws IOException {
         PopulationFlow pf = new PopulationFlow();
-        String filename = "./data/population-data.csv";
+        String filename = "../data/population-data.csv";
+//        전입 전출 출력
+//        List<PopulationMove> pml = pf.readByLine(filename);
+//        for (PopulationMove pm : pml) {
+//            System.out.printf("전입 : %s, 전출 : %s\n", sidoMapping(pm.getToSido()), sidoMapping(pm.getFromSido()));
+//        }
 
-        PopulationMove pm = pf.parse("11,650,60000,2021,02,15,41,480,26200,5,4,055,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,90170");
-        System.out.println(pm.getFromSido());
-        System.out.println(pm.getToSido());
-
+        pf.createFile("from_to.txt");
     }
 }
