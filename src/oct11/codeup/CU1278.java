@@ -7,12 +7,9 @@ public class CU1278 {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int cnt = 0;
-        while (true) {
+        while (a > 0) {
             cnt++;
             a = a/10;
-            if (a == 0){
-                break;
-            }
         }
         System.out.println(cnt);
     }
