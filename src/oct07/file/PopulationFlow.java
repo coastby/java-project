@@ -107,16 +107,20 @@ public class PopulationFlow {
         Map<String, Integer> moveCntMap = pf.getMoveCntMap(pml);
 
 
-
+        Map<Integer, Integer> seoulCnt = new TreeMap<>();
         for (String key : moveCntMap.keySet()) {
             String[] sidos = key.split(",");
 
             int from = PopulationMove.heatMapping(sidos[0]);
             int to = PopulationMove.heatMapping(sidos[1]);
+            if (from == 0) {
+                seoulCnt.put(to, moveCntMap.get(key));
+            }
 
-            String line = String.format("[%d, %d, %d]", from, to, moveCntMap.get(key));
-            System.out.print(line+", ");
-
+        }
+        System.out.println(seoulCnt);
+        for (int key : seoulCnt.keySet()) {
+            System.out.print(seoulCnt.get(key)+", ");
         }
 
     }

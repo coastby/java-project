@@ -1,4 +1,4 @@
-package oct12;
+package oct12.algorithm;
 
 import java.util.Scanner;
 

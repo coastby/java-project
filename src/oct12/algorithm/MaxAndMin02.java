@@ -10,6 +10,8 @@ public class MaxAndMin02 {
         int targetVal = arr[0];
         for (int i = 0; i < arr.length; i++) {
             boolean isSth = compare.doSomething(arr[i],targetVal);
+            //max인 경우 arr[i] > targetValue
+            //min인 경우 arr[i] < targetValue
             if (isSth) {
                 targetVal = arr[i];
             }

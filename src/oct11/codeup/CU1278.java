@@ -1,4 +1,4 @@
-package oct11.algorithm;
+package oct11.codeup;
 
 import java.util.Scanner;
 
